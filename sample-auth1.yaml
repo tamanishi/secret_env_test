@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-auth1
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu:latest
+      command:
+      - sh
+      - -c
+      args:
+      - tail -f /dev/null
+      env:
+      - name: TEST_SECRET_VALUE
+        valueFrom:
+          secretKeyRef:
+            name: sample-auth
+            key: TEST_SECRET_VALUE
+
